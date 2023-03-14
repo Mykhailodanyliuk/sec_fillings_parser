@@ -92,6 +92,9 @@ def upload_sec_fillings_data():
 
 if __name__ == '__main__':
     while True:
+        start_time = time.time()
         client = pymongo.MongoClient('mongodb://localhost:27017')
         upload_sec_fillings_data()
         client.close()
+        work_time = int(time.time() - start_time)
+        time.sleep(abs(work_time % 14400 - 14400))
